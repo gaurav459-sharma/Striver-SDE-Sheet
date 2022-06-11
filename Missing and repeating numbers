@@ -1,0 +1,26 @@
+#include <bits/stdc++.h> 
+
+pair<int,int> missingAndRepeating(vector<int> &arr, int n)
+{
+	// Write your code here 
+//     sort(arr.begin(),arr.end());
+    pair<int,int>res;
+    int sum=0;
+    for(int i=0;i<n;i++){
+        sum+=arr[i];  
+    }
+    for(int i=0;i<n;i++){
+        if(arr[abs(arr[i])-1]<0){
+            res.second=abs(arr[i]);
+            break;
+        }
+        else{
+            arr[abs(arr[i])-1] = -arr[abs(arr[i])-1];
+        }
+    }
+  
+    res.first=(n*(n+1))/2 -sum+res.second;
+    return res;
+    
+	
+}
